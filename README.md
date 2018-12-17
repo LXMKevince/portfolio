@@ -38,4 +38,39 @@
         >`python manage.py migrate`
     + 创建超级管理员
         >`python manage.py createsuperuser`
+    + 在项目文件urls.py中添加路由
+        ```python
+        from gallery import views
 
+        urlpatterns = [
+        path('', views.home),
+        ]
+
+        ```
+    + 在app的views.py中引入models
+        ```python
+        from gallery.models import GALLERY
+
+        def home(request):
+            # 模型中所有对象
+            gallerys = GALLERY.objects
+            # 传递到html页面
+            return render(request, 'home.html', {'gallerys': gallerys}) 
+        ``` 
+    + 在home.html中使用在后台添加的数据
+        ```html
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>首页</title>
+            </head>
+            <body>
+                 <h1>我的主页</h1>
+                    <!-- 快捷方式：for+tab -->
+                    {% for gallery in gallerys.all %}
+                    {{ gallery.description }}
+                    {% endfor %}
+            </body>
+        </html>
+        ```
