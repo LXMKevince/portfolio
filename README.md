@@ -74,3 +74,48 @@
             </body>
         </html>
         ```
+    + 再次修改models.py让其在后台添加后显示名称，每次修改models都需要迁移到数据库
+        ```python
+        img = models.ImageField(default='default.png', upload_to='images/')
+        title = models.CharField(default='作品标题', max_length=50)
+
+        # 在后台显示标题
+        def __str__(self):
+             return self.title
+        ```
+    + 在settings.py中添加媒体路径
+        ```python
+        # 添加媒体的路径
+
+        MEDIA_URL = '/media/'
+
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+        ```
+    + 修改url.py添加媒体路由
+        ```python
+        from django.conf.urls.static import static
+        from django.conf import settings
+
+        urlpatterns = [
+            path('admin/', admin.site.urls),
+            path('', views.home),
+        ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        ```
+    + 在前端页面显示加入的媒体（image）
+        ```html
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <title>首页</title>
+            </head>
+            <body>
+                <h1>我的主页</h1>
+                    {% for gallery in gallerys.all %}
+                    {{ gallery.description }}
+                    <img src="{{ gallery.img.url }}" alt="">
+                    {% endfor %}
+            </body>
+        </html>
+        ```
