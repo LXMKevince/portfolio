@@ -19,4 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.blog_page),
+    # 文章详情
+    path('<int:blog_id>/', views.blog_page_1),
 ]

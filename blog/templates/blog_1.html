@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div style="text-align: center">
+		<h1>   {{ blog }}</h1>
+		<h3>   {{ blog.date }}</h3>
+		<img src="{{ blog.image.url }}" width="20%" height="50%">
+		<pre style="width:750px;word-wrap: break-word;white-space:normal;left: 226px;position: absolute;">
+			{{ blog.text }}
+		</pre>
+	</div>
+</body>
+</html>

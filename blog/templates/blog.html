@@ -85,7 +85,7 @@
         <div class="container">
 			{% for blog in blogs.all %}
 				<br>
-				<h2><a href="#">{{ blog.title }}</a></h2>
+				<h2><a href="{{ blog.id }}">{{ blog.title }}</a></h2>
 
 				<br>
 				{{ blog.date }}
