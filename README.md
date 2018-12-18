@@ -119,7 +119,6 @@
             </body>
         </html>
         ```
----
     + 处理静态文件，并进行分分类
         ```python
         STATICFILES_DIRS = [
