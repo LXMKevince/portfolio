@@ -119,3 +119,15 @@
             </body>
         </html>
         ```
+---
+    + 处理静态文件，并进行分分类
+        ```python
+        STATICFILES_DIRS = [
+            os.path.join(BASE_DIR, 'portfolio/static/'),
+            # os.path.join(BASE_DIR, 'blog/static/'),
+        ]
+        STATIC_URL = '/static/'
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+        ```
+    + 收集静态文件
+        >`python manage.py collectstatic`
